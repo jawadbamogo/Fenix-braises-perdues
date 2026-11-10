@@ -3,7 +3,10 @@ extends CharacterBody2D
 signal touched_hazard
 
 @export var speed: float = 230.0
-@export var screen_margin: float = 34.0
+@export var min_x: float = 92.0
+@export var max_x: float = 1508.0
+@export var min_y: float = 92.0
+@export var max_y: float = 808.0
 var controls_enabled: bool = true
 var facing: Vector2 = Vector2.RIGHT
 
@@ -32,11 +35,10 @@ func _physics_process(_delta: float) -> void:
         facing = input_vector
     move_and_slide()
 
-    # Securite supplementaire : Fenix ne peut jamais sortir de la zone visible.
-    # Meme si une collision de mur est ratee, sa position est bloquee dans l'ecran.
-    var viewport_size: Vector2 = get_viewport_rect().size
-    global_position.x = clampf(global_position.x, screen_margin, viewport_size.x - screen_margin)
-    global_position.y = clampf(global_position.y, screen_margin, viewport_size.y - screen_margin)
+    # Limites logiques permanentes de l'arène : impossible de sortir de l'écran,
+    # même en cas de problème de collision avec un mur.
+    global_position.x = clampf(global_position.x, min_x, max_x)
+    global_position.y = clampf(global_position.y, min_y, max_y)
 
 func hit_by_hazard() -> void:
     emit_signal("touched_hazard")
