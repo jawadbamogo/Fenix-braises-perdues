@@ -1,0 +1,257 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1"]
+[ext_resource type="Texture2D" path="res://assets/floor_level2.png" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/Player.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/Wall.tscn" id="4"]
+[ext_resource type="PackedScene" path="res://scenes/Spike.tscn" id="5"]
+[ext_resource type="PackedScene" path="res://scenes/Enemy.tscn" id="6"]
+[ext_resource type="AudioStream" path="res://assets/hit.wav" id="7"]
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1")
+level_number = 2
+level_duration = 30.0
+next_scene_path = "res://scenes/Level3.tscn"
+start_position = Vector2(800, 760)
+
+[node name="Floor" type="Sprite2D" parent="."]
+position = Vector2(800, 450)
+texture = ExtResource("2")
+
+[node name="ArenaTitle" type="Label" parent="."]
+position = Vector2(590, 20)
+text = "NIVEAU 2 - COULOIRS ARDENTS"
+theme_override_font_sizes/font_size = 30
+
+[node name="Player" parent="." instance=ExtResource("3")]
+position = Vector2(800, 760)
+
+[node name="WallTop" parent="." instance=ExtResource("4")]
+position = Vector2(800, 58)
+scale = Vector2(23, 0.6)
+
+[node name="WallBottom" parent="." instance=ExtResource("4")]
+position = Vector2(800, 842)
+scale = Vector2(23, 0.6)
+
+[node name="WallLeft" parent="." instance=ExtResource("4")]
+position = Vector2(58, 450)
+scale = Vector2(0.6, 12)
+
+[node name="WallRight" parent="." instance=ExtResource("4")]
+position = Vector2(1542, 450)
+scale = Vector2(0.6, 12)
+
+[node name="TopBar" parent="." instance=ExtResource("4")]
+position = Vector2(800, 245)
+scale = Vector2(4.0, 0.6)
+
+[node name="BottomBar" parent="." instance=ExtResource("4")]
+position = Vector2(800, 655)
+scale = Vector2(4.0, 0.6)
+
+[node name="PillarL" parent="." instance=ExtResource("4")]
+position = Vector2(390, 450)
+scale = Vector2(0.6, 3.0)
+
+[node name="PillarR" parent="." instance=ExtResource("4")]
+position = Vector2(1210, 450)
+scale = Vector2(0.6, 3.0)
+
+[node name="Spike1" parent="." instance=ExtResource("5")]
+position = Vector2(230, 180)
+
+[node name="Spike2" parent="." instance=ExtResource("5")]
+position = Vector2(295, 180)
+
+[node name="Spike3" parent="." instance=ExtResource("5")]
+position = Vector2(360, 180)
+
+[node name="Spike4" parent="." instance=ExtResource("5")]
+position = Vector2(1240, 180)
+
+[node name="Spike5" parent="." instance=ExtResource("5")]
+position = Vector2(1305, 180)
+
+[node name="Spike6" parent="." instance=ExtResource("5")]
+position = Vector2(1370, 180)
+
+[node name="Spike7" parent="." instance=ExtResource("5")]
+position = Vector2(560, 355)
+
+[node name="Spike8" parent="." instance=ExtResource("5")]
+position = Vector2(625, 355)
+
+[node name="Spike9" parent="." instance=ExtResource("5")]
+position = Vector2(975, 355)
+
+[node name="Spike10" parent="." instance=ExtResource("5")]
+position = Vector2(1040, 355)
+
+[node name="Spike11" parent="." instance=ExtResource("5")]
+position = Vector2(560, 545)
+
+[node name="Spike12" parent="." instance=ExtResource("5")]
+position = Vector2(625, 545)
+
+[node name="Spike13" parent="." instance=ExtResource("5")]
+position = Vector2(975, 545)
+
+[node name="Spike14" parent="." instance=ExtResource("5")]
+position = Vector2(1040, 545)
+
+[node name="Spike15" parent="." instance=ExtResource("5")]
+position = Vector2(735, 450)
+
+[node name="Spike16" parent="." instance=ExtResource("5")]
+position = Vector2(865, 450)
+
+[node name="Enemy1" parent="." instance=ExtResource("6")]
+position = Vector2(220, 300)
+speed = 96.0
+
+[node name="Enemy2" parent="." instance=ExtResource("6")]
+position = Vector2(1380, 300)
+speed = 96.0
+
+[node name="Enemy3" parent="." instance=ExtResource("6")]
+position = Vector2(260, 560)
+speed = 96.0
+
+[node name="Enemy4" parent="." instance=ExtResource("6")]
+position = Vector2(1340, 560)
+speed = 96.0
+
+[node name="Enemy5" parent="." instance=ExtResource("6")]
+position = Vector2(800, 150)
+speed = 92.0
+
+[node name="Enemy6" parent="." instance=ExtResource("6")]
+position = Vector2(1120, 150)
+speed = 92.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="ColorRect" parent="CanvasLayer/HUD"]
+offset_left = 18.0
+offset_top = 18.0
+offset_right = 720.0
+offset_bottom = 145.0
+color = Color(0.03, 0.03, 0.05, 0.84)
+mouse_filter = 2
+
+[node name="HeartsLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 38.0
+offset_top = 26.0
+offset_right = 300.0
+offset_bottom = 68.0
+text = "♥ ♥ ♥"
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 0.2, 0.2, 1)
+
+[node name="LevelLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 320.0
+offset_top = 26.0
+offset_right = 500.0
+offset_bottom = 68.0
+text = "Niveau 2 / 3"
+theme_override_font_sizes/font_size = 22
+
+[node name="ObjectiveLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 38.0
+offset_top = 78.0
+offset_right = 340.0
+offset_bottom = 118.0
+text = "Survis encore : 30 s"
+theme_override_font_sizes/font_size = 18
+
+[node name="MessageLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 350.0
+offset_top = 78.0
+offset_right = 700.0
+offset_bottom = 128.0
+text = "Évite les ennemis et les pointes."
+theme_override_font_sizes/font_size = 16
+autowrap_mode = 3
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 720.0
+offset_top = 28.0
+offset_right = 1030.0
+offset_bottom = 70.0
+text = "Temps total : 00:00"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 25
+theme_override_colors/font_color = Color(1, 0.82, 0.25, 1)
+
+[node name="ControlsLabel" type="Label" parent="CanvasLayer/HUD"]
+offset_left = 1080.0
+offset_top = 30.0
+offset_right = 1570.0
+offset_bottom = 65.0
+text = "WASD / flèches : bouger   |   R : recommencer"
+horizontal_alignment = 2
+
+[node name="HitFlash" type="ColorRect" parent="CanvasLayer"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.65, 0.05, 0.05, 0.30)
+mouse_filter = 2
+
+[node name="TransitionPanel" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Backdrop" type="ColorRect" parent="CanvasLayer/TransitionPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.01, 0.01, 0.02, 0.78)
+mouse_filter = 2
+
+[node name="Title" type="Label" parent="CanvasLayer/TransitionPanel"]
+offset_left = 450.0
+offset_top = 340.0
+offset_right = 1150.0
+offset_bottom = 410.0
+text = "NIVEAU TERMINÉ"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 42
+theme_override_colors/font_color = Color(1, 0.65, 0.2, 1)
+
+[node name="Text" type="Label" parent="CanvasLayer/TransitionPanel"]
+offset_left = 500.0
+offset_top = 430.0
+offset_right = 1100.0
+offset_bottom = 530.0
+text = "Préparation du niveau suivant..."
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_font_sizes/font_size = 22
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7")
+volume_db = -4.0
